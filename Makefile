@@ -98,7 +98,7 @@ ram:
 	make ram0 LINKER_SCRIPT=./linker/stm32f4_linker_ram.ld
 
 flash0: $(OBJS) $(PROJECT).elf  $(PROJECT).hex
-	$(CCPREFIX)objcopy -O binary -S -R .isr_vector $(PROJECT).elf $(PROJECT).bin
+	$(CCPREFIX)objcopy -O binary -S $(PROJECT).elf $(PROJECT).bin
 	$(TRGT)size $(PROJECT).elf
 	$(CCPREFIX)objdump -d $(PROJECT).elf > $(PROJECT).dis
 	@(find src -name "*.o"; echo obj) | xargs mv
